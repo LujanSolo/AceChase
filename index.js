@@ -8,6 +8,8 @@ const cardObjectDefinitions = [
 
 const cardBackImgPath = '/images/card-back-blue.png'
 
+const cardContainerElem = document.querySelector('.card-container')
+
 function createCard(cardItem){
   //create divs with elements that make up a card
   const cardElem = createElement('div')
@@ -45,7 +47,21 @@ function createCard(cardItem){
   addClassToElement(cardFrontImg, 'card-img')
 
   //add back image element as child element to back card element
-  
+  addChildElement(cardBackElem, cardBackImg)
+
+  //add front image element as child element to front card element
+  addChildElement(cardFrontElem, cardFrontImg)
+
+  //add back card element as child element to inner card element
+  addChildElement(cardInnerElem, cardBackElem)
+
+  //add front card element as child element to inner card element
+  addChildElement(cardInnerElem, cardFrontElem)
+
+  //add inner card element as child to card element
+  addChildElement(cardElem, cardInnerElem)
+
+  //
 }
 
 function createElement(elemType){
@@ -62,4 +78,8 @@ function addIdToElement(elem, id){
 
 function addSrcToImageElem(imgElem, src){
   imgElem.src = src
+}
+
+function addChildElement(parentElem, childElem){
+  parentElem.appendChild(childElem)
 }
