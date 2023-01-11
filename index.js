@@ -6,6 +6,7 @@ const cardObjectDefinitions = [
   {id:4, imagePath:'/images/card-AceSpades.png'}
 ]
 
+const cardBackImgPath = '/images/card-back-blue.png'
 
 function createCard(cardItem){
   //create divs with elements that make up a card
@@ -26,10 +27,25 @@ function createCard(cardItem){
   addClassToElement(cardInnerElem, 'card-inner')
 
   //add class to front card element
-  
+  addClassToElement(cardFrontElem, 'card-front')
+
   //add class to back card element
+  addClassToElement(cardBackElem, 'card-back')
 
   //add src attribute and appropriate value to img element - back of card
+  addSrcToImageElement(cardBackElem, cardBackImgPath)
+
+  //add src attribute and appropriate value to img element - front of card
+  addSrcToImageElement(cardFrontElem, cardItem.imagePath)
+
+  //assign class to back image element of back of card
+  addClassToElement(cardBackImg, 'card-img')
+
+  //assign class to front image element of front of card
+  addClassToElement(cardFrontImg, 'card-img')
+
+  //add back image element as child element to back card element
+  
 }
 
 function createElement(elemType){
@@ -39,6 +55,11 @@ function createElement(elemType){
 function addClassToElement(elem, className){
   elem.classList.add(className)
 }
-function addIdToElement(elem, id){
 
+function addIdToElement(elem, id){
+  elem.id = id
+}
+
+function addSrcToImageElem(imgElem, src){
+  imgElem.src = src
 }
