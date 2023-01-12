@@ -1,4 +1,3 @@
-
 const cardObjectDefinitions = [
   {id:1, imagePath:'images/card-KingHearts.png'},
   {id:2, imagePath:'images/card-JackClubs.png'},
@@ -11,6 +10,9 @@ const cardBackImgPath = 'images/card-back-blue.png'
 let cards = []
 
 const playGameButtonElem = document.getElementById('playGame')
+
+const collapsedGridAreaTemplate = '"a a" "a a"'
+const cardCollectionCellClass = ".card-pos-a"
 
 const cardContainerElem = document.querySelector('.card-container')
 
@@ -34,9 +36,26 @@ function initializeNewGame(){
 }
 function startRound(){
   initializeNewRound()
+  collectCards()
 }
 function initializeNewRound(){
 
+}
+
+//add cards to a single stack
+function collectCards(){
+  transformGridArea(collapsedGridAreaTemplate)
+  addCardsToGridAreaCell(cardCollectionCellClass)
+}
+function transformGridArea(areas){
+  cardContainerElem.style.gridTemplateAreas = areas
+}
+function addCardsToGridAreaCell(cellPositionClassName){
+  const cellPositionElem = document.querySelector(cellPositionClassName)
+
+  cards.forEach((card, index) =>{
+    addChildElement(cellPositionElem, card)
+  })
 }
 
 function createCards(){
