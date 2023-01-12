@@ -26,7 +26,17 @@ function loadGame(){
 }
 
 function startGame(){
-  alert('CLICKED')
+  initializeNewGame()
+  startRound()
+}
+function initializeNewGame(){
+
+}
+function startRound(){
+  initializeNewRound()
+}
+function initializeNewRound(){
+
 }
 
 function createCards(){
